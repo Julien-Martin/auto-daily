@@ -6,14 +6,13 @@ const options = {
     baseURL: process.env.ENYO_API,
     headers: {}
 };
-const instance = axios.create(options);
 
 module.exports = {
     async login() {
-      return instance.post('/auth/login', {
+      return axios.post('/auth/login', {
           email: process.env.ENYO_USER,
           password: process.env.ENYO_PASS
-      }).then(response => {
+      }, options).then(response => {
           const data = response.data;
           if(data && data.token) {
               options.headers.authorization = `Bearer ${data.token}`;
@@ -23,8 +22,9 @@ module.exports = {
           console.error(err);
       })
     },
+
     async getUserProfile() {
-        return instance.get('/auth/user')
+        return axios.get('/auth/user', options)
             .then((response) => {
                 return response;
             })
@@ -82,7 +82,7 @@ module.exports = {
     },
     
     async sendDailyStandUp(dailyStandUp) {
-        return axios.create(options).post('daily_standup', dailyStandUp)
+        return axios.post('daily_standup', dailyStandUp, options)
             .then(response => {
                 console.log(response);
             })

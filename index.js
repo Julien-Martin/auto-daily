@@ -25,8 +25,9 @@ async function dailyStandUp(sendDaily = true) {
                                 console.error(err);
                             })
                     } else {
-                        Enyo.getUserProfile()
-                        console.log(dailyStandUp);
+                        Enyo.getUserProfile().then((response) => {
+                          console.log(response.data);
+                        })
                     }
                 })
                 .catch(err => {

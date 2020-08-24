@@ -13,11 +13,9 @@ const options = {
     },
 };
 
-const instance = axios.create(options);
-
 module.exports = {
     async getTasks () {
-        return instance.get('/tasks')
+        return axios.get('/tasks', options)
             .then(response => {
                 const tasks = response.data.data;
                 if (tasks && tasks.length) {

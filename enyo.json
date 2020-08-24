@@ -1,0 +1,73 @@
+{
+  "userId": "5ec78b03b5b514597b0fe4dd",
+  "date": "2020-08-21T15:04:51.839Z",
+  "todaysTasks": {
+    "notes": "Catch up overtime (30 minutes)",
+    "projects": [
+      {
+        "projectId": "5f28102c7374402ce0bf9e56",
+        "tasks": [
+          {
+            "task": "Error dans le scheduler",
+            "time": "0.7227777778",
+            "comment": ""
+          },
+          {
+            "task": "l'import du marchand 108 ne traite pas les dispos lang",
+            "time": "1.088333333",
+            "comment": ""
+          },
+          {
+            "task": "VEC - MR feedback",
+            "time": "0.7575",
+            "comment": ""
+          },
+          {
+            "task": "Bloc prestations est en anglais, et il ne devrait etre affic...",
+            "time": "0.6363888889",
+            "comment": ""
+          },
+          {
+            "task": "Ne pas supprimer les dispos s'il ny a pas de dispos_tmp",
+            "time": "1.520833333",
+            "comment": ""
+          },
+          {
+            "task": "Bulk action : edit, delete, inline actions",
+            "time": "1.445555556",
+            "comment": ""
+          },
+          {
+            "task": "Create a View mode for awesomeform using display components",
+            "time": "1.258888889",
+            "comment": ""
+          },
+          {
+            "task": "\tDéplacer le code de parseSchema et parseColumns dans une mix...",
+            "time": "0",
+            "comment": ""
+          }
+        ]
+      }
+    ]
+  },
+  "planForTomorrow": {
+    "notes": "",
+    "projects": [
+      {
+        "projectId": "5f28102c7374402ce0bf9e56",
+        "tasks": [
+          {
+            "task": "Vue-enyo-components task",
+            "comment": ""
+          }
+        ]
+      }
+    ]
+  },
+  "problemsOrBlocking": {
+    "notes": "",
+    "projects": []
+  },
+  "other": ""
+}

@@ -1,0 +1,25 @@
+{
+  "name": "autodaily",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "daily": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.codeassist.io/tools/autodaily.git"
+  },
+  "keywords": [],
+  "author": "Julien Martin <reykozz15@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.27.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

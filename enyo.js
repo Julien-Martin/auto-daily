@@ -22,16 +22,6 @@ module.exports = {
           console.error(err);
       })
     },
-
-    async getUserProfile() {
-        return axios.get('/auth/user', options)
-            .then((response) => {
-                return response;
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    },
     
     async createDailyStandUp(tasks, tomorrowTasks) {
       return this.login()
@@ -82,12 +72,6 @@ module.exports = {
     },
     
     async sendDailyStandUp(dailyStandUp) {
-        return axios.post('daily_standup', dailyStandUp, options)
-            .then(response => {
-                console.log(response);
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        return axios.post('/daily_standup', dailyStandUp, options);
     },
 };

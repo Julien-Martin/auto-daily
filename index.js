@@ -16,15 +16,17 @@ async function dailyStandUp(sendDaily = true) {
       .then(response => {
         if (response.data) {
           console.log('Daily Send');
+          console.log(`${process.env.ENYO_APP}/daily_standup/${response.data.body._id}`);
         }
       })
       .catch(err => {
         console.error(err);
       })
       .finally(() => {
-        console.log(`${process.env.ENYO_APP}/daily_standup/5f43e5687374402ce0c09baa`);
         process.exit(0);
       })
+  } else {
+    console.log(dailyStandUp);
   }
 }
 

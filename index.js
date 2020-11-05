@@ -1,15 +1,15 @@
 const axios = require('axios');
 require('dotenv').config();
 
-const Ninja = require('./ninja');
 const Enyo = require('./enyo');
+const Freebe = require('./Freebe')
 
 const tomorrowTasks = [
     Enyo.createTomorrowTask("Feedback Page Hub"),
 ];
 
 async function dailyStandUp(sendDaily = true) {
-  const tasks = await Ninja.cleanTasks();
+  const tasks = await Freebe.getTodayTasks();
   const dailyStandUp = await Enyo.createDailyStandUp(tasks, tomorrowTasks);
   if(sendDaily) {
     Enyo.sendDailyStandUp(dailyStandUp)
@@ -26,8 +26,8 @@ async function dailyStandUp(sendDaily = true) {
         process.exit(0);
       })
   } else {
-    console.log(dailyStandUp.todaysTasks.projects[0].tasks);
+    console.log(dailyStandUp);
   }
 }
 
-dailyStandUp(false);
+dailyStandUp(true);

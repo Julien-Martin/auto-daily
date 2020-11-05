@@ -5,7 +5,7 @@ const Ninja = require('./ninja');
 const Enyo = require('./enyo');
 
 const tomorrowTasks = [
-    Enyo.createTomorrowTask("Create a dashboard report component that will allow to build bia drag and drop a dashboard of graphs and numbers"),
+    Enyo.createTomorrowTask("Feedback Page Hub"),
 ];
 
 async function dailyStandUp(sendDaily = true) {
@@ -30,4 +30,4 @@ async function dailyStandUp(sendDaily = true) {
   }
 }
 
-dailyStandUp(true);
+dailyStandUp(false);

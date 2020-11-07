@@ -1,33 +1,48 @@
-const axios = require('axios');
 require('dotenv').config();
+const chalk = require('chalk');
+const clear = require('clear');
+const figlet = require('figlet');
 
-const Enyo = require('./enyo');
-const Freebe = require('./Freebe')
+const inquirer = require('./lib/Inquirer');
+const Freebe = require('./lib/Freebe');
+const Enyo = require('./lib/Enyo');
 
-const tomorrowTasks = [
-    Enyo.createTomorrowTask("HUB - moteur de recherche : Textes en rotation et recherche par défaut"),
-];
+clear();
 
-async function dailyStandUp(sendDaily = true) {
+console.log(
+    chalk.yellow(
+        figlet.textSync('AutoDaily', { horizontalLayout: 'full'})
+    )
+);
+
+const run = async (sendDaily = false) => {
   const tasks = await Freebe.getTodayTasks();
-  const dailyStandUp = await Enyo.createDailyStandUp(tasks, tomorrowTasks);
-  if(sendDaily) {
+  if (!tasks.length) {
+    console.log(chalk.red('No tasks today.'))
+    process.exit(0);
+  }
+  let tomorrowTask = await inquirer.askTomorrowTask();
+  tomorrowTask = Enyo.createTomorrowTask(tomorrowTask.response);
+  const projectsList = await Enyo.getProjects();
+  const selectedProject = await inquirer.askProject(projectsList);
+  const dailyStandUp = await Enyo.createDailyStandUp(tasks, tomorrowTask, selectedProject);
+  if (sendDaily) {
     Enyo.sendDailyStandUp(dailyStandUp)
-      .then(response => {
-        if (response.data) {
-          console.log('Daily Send');
-          console.log(`${process.env.ENYO_APP}/daily_standup/${response.data.body._id}`);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-      })
-      .finally(() => {
-        process.exit(0);
-      })
+        .then((response) => {
+          if (response.data) {
+            console.log('Daily Send');
+            console.log(`${process.env.ENYO_APP}/daily_standup/${response.data.body._id}`);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          process.exit(0);
+        })
   } else {
     console.log(dailyStandUp);
   }
 }
 
-dailyStandUp(true);
+run(false);

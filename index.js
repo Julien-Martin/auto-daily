@@ -5,7 +5,7 @@ const Enyo = require('./enyo');
 const Freebe = require('./Freebe')
 
 const tomorrowTasks = [
-    Enyo.createTomorrowTask("Feedback Page Hub"),
+    Enyo.createTomorrowTask("HUB - moteur de recherche : Textes en rotation et recherche par défaut"),
 ];
 
 async function dailyStandUp(sendDaily = true) {

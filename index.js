@@ -1,3 +1,5 @@
+#!/usr/bin/env -S node -r dotenv/config
+
 require('dotenv').config();
 const chalk = require('chalk');
 const clear = require('clear');
@@ -15,7 +17,7 @@ console.log(
     )
 );
 
-const run = async (sendDaily = false) => {
+const run = async () => {
     const tasks = await Freebe.getTodayTasks();
     if (!tasks.length) {
         console.log(chalk.red('No tasks today.'))
@@ -26,8 +28,10 @@ const run = async (sendDaily = false) => {
     const projectsList = await Enyo.getProjects();
     const selectedProject = await inquirer.askProject(projectsList);
     const dailyStandUp = await Enyo.createDailyStandUp(tasks, tomorrowTask, selectedProject);
-    if (sendDaily) {
+    const askToSend = await inquirer.askToSend();
+    if (askToSend.sendDaily) {
         const dailyStandUpSended = await Enyo.sendDailyStandUp(dailyStandUp);
+        console.log(dailyStandUpSended);
         console.log('Daily Send');
         console.log(`${process.env.ENYO_APP}/daily_standup/${dailyStandUpSended._id}`);
     } else {
@@ -36,4 +40,4 @@ const run = async (sendDaily = false) => {
     process.exit(0);
 }
 
-run(false);
+run();

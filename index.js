@@ -31,7 +31,6 @@ const run = async () => {
     const askToSend = await inquirer.askToSend();
     if (askToSend.sendDaily) {
         const dailyStandUpSended = await Enyo.sendDailyStandUp(dailyStandUp);
-        console.log(dailyStandUpSended);
         console.log('Daily Send');
         console.log(`${process.env.ENYO_APP}/daily_standup/${dailyStandUpSended._id}`);
     } else {
